@@ -1,0 +1,13 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "yarn workspace example dev",
+    "lib:watch": "yarn workspace vuemoji-picker run build:watch",
+    "lib": "yarn workspace vuemoji-picker",
+    "example": "yarn workspace example"
+  }
+}
