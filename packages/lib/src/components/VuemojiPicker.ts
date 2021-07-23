@@ -21,5 +21,6 @@ export default defineComponent({
         i18n: Object as PropType<PickerConstructorOptions['i18n']>,
         height: String,
         width: String
-    }
+    },
+    emits: ['emojiClick', 'skinToneChange']
 })
