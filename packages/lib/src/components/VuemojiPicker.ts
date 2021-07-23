@@ -1,7 +1,10 @@
 import { defineComponent, PropType } from 'vue-demi'
 import type {
+    EmojiClickEvent,
+    SkinToneChangeEvent,
     PickerConstructorOptions,
 } from 'emoji-picker-element/shared'
+import type { Picker } from 'emoji-picker-element'
 import 'emoji-picker-element/picker'
 import h from '../utils/h-demi'
 import isDarkMode from '../utils/dark-mode'
@@ -22,5 +25,61 @@ export default defineComponent({
         height: String,
         width: String
     },
-    emits: ['emojiClick', 'skinToneChange']
+    emits: ['emojiClick', 'skinToneChange'],
+    methods: {
+        handleClick(event: EmojiClickEvent) {
+            this.$emit('emojiClick', event.detail)
+        },
+        handleSkinToneChange(event: SkinToneChangeEvent) {
+            this.$emit('skinToneChange', event.detail)
+        }
+    },
+    mounted() {
+        const picker = this.$refs.picker as Picker
+        picker.addEventListener('emoji-click', this.handleClick)
+        picker.addEventListener('skin-tone-change', this.handleSkinToneChange)
+    },
+    beforeUnmount() {
+        const picker = this.$refs.picker as Picker
+        picker.removeEventListener('emoji-click', this.handleClick)
+        picker.removeEventListener('skin-tone-change', this.handleSkinToneChange)
+    },
+    render() {
+        const {
+            customEmoji,
+            skinToneEmoji,
+            dataSource,
+            i18n,
+            customCategorySorting,
+            locale,
+            isDark,
+            height,
+            width
+        } = this.$props
+        const props: PickerConstructorOptions = {}
+        if (customEmoji) {
+            props.customEmoji = customEmoji
+        }
+        if (skinToneEmoji) {
+            props.skinToneEmoji = skinToneEmoji
+        }
+        if (dataSource) {
+            props.dataSource = dataSource
+        }
+        if (i18n) {
+            props.i18n = i18n
+        }
+        if (customCategorySorting) {
+            props.customCategorySorting = customCategorySorting
+        }
+        if (locale) {
+            props.locale = locale
+        }
+        return h('emoji-picker', {
+            ref: 'picker',
+            class: isDark ? 'dark' : 'light',
+            style: `height: ${height}; width: ${width};`,
+            ...props
+        })
+    }
 })
