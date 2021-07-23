@@ -1,6 +1,52 @@
 {
-  "name": "lib",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "name": "vuemoji-picker",
+  "description": "A simple Vue 2 and 3 wrapper component for emoji-picker-element.",
+  "keywords": [
+    "vue",
+    "emoji",
+    "picker"
+  ],
+  "license": "MIT",
+  "version": "0.0.1",
+  "module": "dist/vuemoji-picker.esm.js",
+  "main": "dist/vuemoji-picker.cjs.js",
+  "unpkg": "dist/vuemoji-picker.global.js",
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "switch:2": "vue-demi-switch 2 vue2",
+    "switch:3": "vue-demi-switch 3"
+  },
+  "dependencies": {
+    "emoji-picker-element": "^1.6.4",
+    "vue-demi": "^0.11.2"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-beta.1",
+    "vue": "^2.0.0 || >=3.0.0-rc.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.11",
+    "rollup": "^2.52.8",
+    "rollup-plugin-dts": "^3.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.3.0",
+    "typescript": "^4.2.3",
+    "vue": "^3.0.11",
+    "vue2": "npm:vue@2"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wobsoriano/vuemoji-picker.git"
+  },
+  "homepage": "https://github.com/wobsoriano/vuemoji-picker#readme",
+  "types": "dist/index.d.ts"
 }
