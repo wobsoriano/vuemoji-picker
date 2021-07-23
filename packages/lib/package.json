@@ -1,6 +1,6 @@
 {
   "name": "vuemoji-picker",
-  "description": "A simple Vue 2 and 3 wrapper component for emoji-picker-element.",
+  "description": "Vue 2 and 3 lightweight emoji picker.",
   "keywords": [
     "vue",
     "emoji",
