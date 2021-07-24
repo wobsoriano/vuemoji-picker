@@ -48,7 +48,7 @@ export default defineComponent({
     computed: {
         computedStyle() {
             if (this.pickerStyle && typeof this.pickerStyle === 'object') {
-                const style: Record<string, any> = {}
+                const style: Record<any, any> = {}
                 Object.keys(this.pickerStyle).forEach((key) => {
                     if (key === 'height' || key === 'width') {
                         // @ts-ignore

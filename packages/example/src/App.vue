@@ -102,7 +102,7 @@ async function loadCustomEmoji (): Promise<any> {
 const useCustomEmoji = ref(false)
 const customEmoji = ref<CustomEmoji[]>([])
 const darkMode = ref('auto')
-const eventDetail = ref()
+const eventDetail = ref<string>()
 
 const style = ref<VuemojiPickerStyle>({
   height: '400px',
@@ -134,41 +134,5 @@ const onSkinToneChange = (detail: SkinToneChangeEventDetail) => {
 <style>
 .p-20px {
   padding: 20px;
-}
-
-emoji-picker {
-  margin: 0 auto;
-}
-
-/* iPhone 6/7/8/X */
-@media screen and (max-width: 375px) {
-    h1 {
-        font-size: 1.125rem;
-    }
-}
-
-/* iPhone 6/7/8/X */
-@media screen and (max-width: 375px) {
-    emoji-picker.has-custom {
-        --num-columns: 6;
-        --emoji-padding: 0.25rem;
-        --input-padding: 0.125rem;
-    }
-}
-
-/* Nexus 5 */
-@media screen and (max-width: 360px) {
-    emoji-picker {
-        --num-columns: 6;
-        --emoji-padding: 0.25rem;
-        --input-padding: 0.125rem;
-    }
-}
-
-/* JioPhone 2 */
-@media screen and (max-width: 240px) {
-    emoji-picker {
-        height: 80vh;
-    }
 }
 </style>
