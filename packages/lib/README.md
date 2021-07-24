@@ -41,7 +41,7 @@ Name | Type | Default | Description |
 `i18n` | I18n | - | i18n object ([see details](https://github.com/nolanlawson/emoji-picker-element#i18n-structure)) |
 `locale` | String | "en" | Locale string |
 `skinToneEmoji` | String | "🖐️" | The emoji to use for the skin tone picker |
-`pickerStyle` | VuemojiPickerStyle | - | [Customize picker style](https://github.com/nolanlawson/emoji-picker-element#styling) |
+`pickerStyle` | VuemojiPickerStyle | - | style object ([see available options](https://github.com/nolanlawson/emoji-picker-element#styling)) |
 
 ## Events
 
