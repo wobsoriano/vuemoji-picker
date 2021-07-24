@@ -50,8 +50,14 @@ export default defineComponent({
             if (this.pickerStyle && typeof this.pickerStyle === 'object') {
                 const style: Record<string, any> = {}
                 Object.keys(this.pickerStyle).forEach((key) => {
-                    // @ts-ignore
-                    style[`--${toDashes(key)}`] = this.pickerStyle[key]
+                    if (key === 'height' || key === 'width') {
+                        // @ts-ignore
+                        style[key] = this.pickerStyle[key]
+                    } else {
+                        // @ts-ignore
+                        style[`--${toDashes(key)}`] = this.pickerStyle[key]
+                    }
+                    
                 })
                 return style
             }

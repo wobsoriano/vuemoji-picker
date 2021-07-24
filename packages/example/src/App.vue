@@ -59,7 +59,8 @@ import { ref, computed, watch } from 'vue';
 import type {
   SkinToneChangeEventDetail,
   EmojiClickEventDetail,
-  CustomEmoji
+  CustomEmoji,
+  VuemojiPickerStyle
 } from 'vuemoji-picker'
 import { VuemojiPicker } from 'vuemoji-picker'
 
@@ -103,8 +104,9 @@ const customEmoji = ref<CustomEmoji[]>([])
 const darkMode = ref('auto')
 const eventDetail = ref()
 
-const style = ref({
-  buttonActiveBackground: 'red'
+const style = ref<VuemojiPickerStyle>({
+  height: '400px',
+  width: '400px'
 })
 
 const isDark = computed(() => {
