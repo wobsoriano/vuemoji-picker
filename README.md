@@ -2,6 +2,8 @@
 
 A simple Vue 2 and 3 wrapper component for [emoji-picker-element](https://github.com/nolanlawson/emoji-picker-element).
 
+![Demo of vuemoji-picker](https://i.imgur.com/6CcJxLW.gif)
+
 ## Install
 
 ```bash
