@@ -28,6 +28,8 @@ export default [
         sourcemap: true,
         globals: {
           'vue-demi': 'VueDemi',
+          'emoji-picker-element/picker': 'Picker',
+          'emoji-picker-element/database': 'Database'
         },
       }
     ]
