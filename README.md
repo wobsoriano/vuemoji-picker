@@ -12,12 +12,12 @@ yarn add vuemoji-picker
 
 ```html
 <template>
-    <VuemojiPicker @emojiClick="handleEmojiClick" />
+    <VuemojiPicker :picker-style="style" @emojiClick="handleEmojiClick" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { VuemojiPicker, EmojiClickEventDetail } from 'vuemoji-picker'
+import { VuemojiPicker, EmojiClickEventDetail, VuemojiPickerStyle } from 'vuemoji-picker'
 
 export default defineComponent({
     components: { VuemojiPicker },
@@ -26,8 +26,14 @@ export default defineComponent({
             // do something
         }
 
+        const style = ref<VuemojiPickerStyle>({
+          borderSize: '2px',
+          buttonActiveBackground: '#e6e6e6'
+        })
+
         return {
-            handleEmojiClick
+            handleEmojiClick,
+            style
         }
     }
 })

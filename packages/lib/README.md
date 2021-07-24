@@ -2,12 +2,12 @@
 
 ```html
 <template>
-    <VuemojiPicker @emojiClick="handleEmojiClick" />
+    <VuemojiPicker :picker-style="style" @emojiClick="handleEmojiClick" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { VuemojiPicker, EmojiClickEventDetail } from 'vuemoji-picker'
+import { VuemojiPicker, EmojiClickEventDetail, VuemojiPickerStyle } from 'vuemoji-picker'
 
 export default defineComponent({
     components: { VuemojiPicker },
@@ -16,8 +16,14 @@ export default defineComponent({
             // do something
         }
 
+        const style = ref<VuemojiPickerStyle>({
+          borderSize: '2px',
+          buttonActiveBackground: '#e6e6e6'
+        })
+
         return {
-            handleEmojiClick
+            handleEmojiClick,
+            style
         }
     }
 })
@@ -29,14 +35,13 @@ export default defineComponent({
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `isDark` | Boolean | system | Set picker theme  |
-`height` | String | "400px" | Set picker height  |
-`width` | String | "344px" | Set picker width  |
 `customCategorySorting` | Function | - | Function to sort custom category strings (sorted alphabetically by default)  |
 `customEmoji` | CustomEmoji[] | - | Array of custom emoji |
 `dataSource` | String | "https://cdn.jsdelivr.net/npm/emoji-picker-element-data@^1/en/emojibase/data.json" | URL to fetch the emoji data from |
 `i18n` | I18n | - | i18n object ([see details](https://github.com/nolanlawson/emoji-picker-element#i18n-structure)) |
 `locale` | String | "en" | Locale string |
 `skinToneEmoji` | String | "🖐️" | The emoji to use for the skin tone picker |
+`pickerStyle` | VuemojiPickerStyle | - | [Customize picker style](https://github.com/nolanlawson/emoji-picker-element#styling) |
 
 ## Events
 
