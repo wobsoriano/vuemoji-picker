@@ -7,7 +7,7 @@
     "picker"
   ],
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "module": "dist/vuemoji-picker.esm.js",
   "main": "dist/vuemoji-picker.cjs.js",
   "unpkg": "dist/vuemoji-picker.global.js",
