@@ -52,7 +52,7 @@ Name | Type | Default | Description |
 
 ## Database API Composable
 
-Wraps the [Database API](https://github.com/nolanlawson/emoji-picker-element#database) into a composable.
+Use the [Database API](https://github.com/nolanlawson/emoji-picker-element#database) as a composable.
 
 ```js
 import { defineComponent, ref } from 'vue' // @vue/composition-api for Vue 2
