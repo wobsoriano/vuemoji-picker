@@ -51,8 +51,7 @@ export default defineComponent({
                 const style: Record<any, any> = {}
                 Object.keys(this.pickerStyle).forEach((key) => {
                     if (key === 'height' || key === 'width') {
-                        // @ts-ignore
-                        style[key] = this.pickerStyle[key]
+                        style[key] = this.pickerStyle?.[key]
                     } else {
                         // @ts-ignore
                         style[`--${toDashes(key)}`] = this.pickerStyle[key]
