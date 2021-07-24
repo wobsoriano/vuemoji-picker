@@ -1,4 +1,4 @@
-import { defineComponent, PropType } from 'vue-demi'
+import { defineComponent, PropType, Vue2 } from 'vue-demi'
 import type {
     EmojiClickEvent,
     SkinToneChangeEvent,
@@ -10,6 +10,10 @@ import h from '../utils/h-demi'
 import isDarkMode from '../utils/dark-mode'
 import toDashes from '../utils/to-dashes'
 import { VuemojiPickerStyle } from '../'
+
+if (Vue2) {
+    Vue2.config.ignoredElements.push('emoji-picker')
+}
 
 export default defineComponent({
     props: {
