@@ -64,31 +64,45 @@ export default defineComponent({
             return {}
         }
     },
+    watch: {
+        customEmoji: {
+            immediate: true,
+            handler(newValue) {
+                if (this.$refs.picker && newValue) {
+                    (this.$refs.picker as Picker).customEmoji = newValue;
+                }
+            }
+        },
+        i18n: {
+            immediate: true,
+            handler(newValue) {
+                if (this.$refs.picker && newValue) {
+                    (this.$refs.picker as Picker).i18n = newValue;
+                }
+            }
+        },
+        customCategorySorting: {
+            immediate: true,
+            handler(newValue) {
+                if (this.$refs.picker && newValue) {
+                    (this.$refs.picker as Picker).customCategorySorting = newValue;
+                }
+            }
+        }
+    },
     render() {
         const {
-            customEmoji,
             skinToneEmoji,
             dataSource,
-            i18n,
-            customCategorySorting,
             locale,
             isDark
         } = this
-        const props: PickerConstructorOptions = {}
-        if (customEmoji) {
-            props.customEmoji = customEmoji
-        }
+        const props: Record<string, string> = {}
         if (skinToneEmoji) {
-            props.skinToneEmoji = skinToneEmoji
+            props['skin-tone-emoji'] = skinToneEmoji
         }
         if (dataSource) {
-            props.dataSource = dataSource
-        }
-        if (i18n) {
-            props.i18n = i18n
-        }
-        if (customCategorySorting) {
-            props.customCategorySorting = customCategorySorting
+            props['data-source'] = dataSource
         }
         if (locale) {
             props.locale = locale

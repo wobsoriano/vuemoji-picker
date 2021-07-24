@@ -77,15 +77,10 @@ interface Result {
 }
 
 const baseUrl = 'https://raw.githubusercontent.com/nolanlawson/emoji-picker-element/master/docs'
-const customEmojiData: CustomEmoji[] = [];
 
 async function loadCustomEmoji (): Promise<any> {
-  if (customEmojiData.length) {
-    // data loaded already
-    return customEmojiData
-  }
-
   const categoriesToCustomEmoji = (await (await fetch(`${baseUrl}/custom.json`)).json() as Result)
+  const customEmojiData: CustomEmoji[] = [];
   for (const [ category, names ] of Object.entries(categoriesToCustomEmoji)) {
     for (const name of names) {
       customEmojiData.push({
