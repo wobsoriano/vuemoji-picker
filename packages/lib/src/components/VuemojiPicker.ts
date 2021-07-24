@@ -8,6 +8,8 @@ import type { Picker } from 'emoji-picker-element'
 import 'emoji-picker-element/picker'
 import h from '../utils/h-demi'
 import isDarkMode from '../utils/dark-mode'
+import toDashes from '../utils/to-dashes'
+import { VuemojiPickerStyle } from '../'
 
 export default defineComponent({
     props: {
@@ -22,8 +24,7 @@ export default defineComponent({
         locale: String,
         customCategorySorting: Function as PropType<(a: string, b: string) => number>,
         i18n: Object as PropType<PickerConstructorOptions['i18n']>,
-        height: String,
-        width: String
+        pickerStyle: Object as PropType<VuemojiPickerStyle>
     },
     emits: ['emojiClick', 'skinToneChange'],
     methods: {
@@ -44,6 +45,20 @@ export default defineComponent({
         picker.removeEventListener('emoji-click', this.handleClick)
         picker.removeEventListener('skin-tone-change', this.handleSkinToneChange)
     },
+    computed: {
+        computedStyle() {
+            if (this.pickerStyle && typeof this.pickerStyle === 'object') {
+                const style: Record<string, any> = {}
+                Object.keys(this.pickerStyle).forEach((key) => {
+                    // @ts-ignore
+                    style[`--${toDashes(key)}`] = this.pickerStyle[key]
+                })
+                return style
+            }
+
+            return {}
+        }
+    },
     render() {
         const {
             customEmoji,
@@ -52,10 +67,8 @@ export default defineComponent({
             i18n,
             customCategorySorting,
             locale,
-            isDark,
-            height,
-            width
-        } = this.$props
+            isDark
+        } = this
         const props: PickerConstructorOptions = {}
         if (customEmoji) {
             props.customEmoji = customEmoji
@@ -78,7 +91,7 @@ export default defineComponent({
         return h('emoji-picker', {
             ref: 'picker',
             class: isDark ? 'dark' : 'light',
-            style: `height: ${height}; width: ${width};`,
+            style: this.computedStyle,
             ...props
         })
     }

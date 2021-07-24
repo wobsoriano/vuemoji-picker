@@ -14,7 +14,7 @@
     </p>
     <div class="flex">
       <div>
-        <VuemojiPicker :is-dark="isDark" :custom-emoji="customEmoji" @emojiClick="onEmojiClick" @skinToneChange="onSkinToneChange" />
+        <VuemojiPicker :picker-style="style" :is-dark="isDark" :custom-emoji="customEmoji" @emojiClick="onEmojiClick" @skinToneChange="onSkinToneChange" />
       </div>
       <div>
         <div class="p-20px">
@@ -102,6 +102,10 @@ const useCustomEmoji = ref(false)
 const customEmoji = ref<CustomEmoji[]>([])
 const darkMode = ref('auto')
 const eventDetail = ref()
+
+const style = ref({
+  buttonActiveBackground: 'red'
+})
 
 const isDark = computed(() => {
   if (darkMode.value === 'auto') return
