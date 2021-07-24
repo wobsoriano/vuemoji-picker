@@ -5,7 +5,7 @@ import type {
     PickerConstructorOptions,
 } from 'emoji-picker-element/shared'
 import type { Picker } from 'emoji-picker-element'
-import 'emoji-picker-element/picker'
+import('emoji-picker-element/picker')
 import h from '../utils/h-demi'
 import isDarkMode from '../utils/dark-mode'
 import toDashes from '../utils/to-dashes'
@@ -107,6 +107,8 @@ export default defineComponent({
         if (locale) {
             props.locale = locale
         }
+
+        
         return h('emoji-picker', {
             ref: 'picker',
             class: isDark ? 'dark' : 'light',
