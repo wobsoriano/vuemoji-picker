@@ -5,6 +5,7 @@ import type {
     PickerConstructorOptions,
 } from 'emoji-picker-element/shared'
 import Picker from 'emoji-picker-element/picker'
+
 import h from '../utils/h-demi'
 import isDarkMode from '../utils/dark-mode'
 import toDashes from '../utils/to-dashes'
@@ -26,6 +27,9 @@ export default defineComponent({
         pickerStyle: Object as PropType<VuemojiPickerStyle>
     },
     emits: ['emojiClick', 'skinToneChange'],
+    data: () => ({
+        picker: new Picker()
+    }),
     methods: {
         handleClick(event: EmojiClickEvent) {
             this.$emit('emojiClick', event.detail)
@@ -63,11 +67,23 @@ export default defineComponent({
             }
             this.picker.classList.toggle('dark', isDark)
             this.picker.classList.toggle('light', !isDark)
+            this.updatePickerStyle()
+        },
+        updatePickerStyle() {
+            if (this.pickerStyle && typeof this.pickerStyle === 'object') {
+                Object.keys(this.pickerStyle).forEach((key) => {
+                    if (key === 'height' && this.pickerStyle?.height) {
+                        this.picker.style.setProperty('height', this.pickerStyle.height)
+                    } else if (key === 'width' && this.pickerStyle?.width) {
+                        this.picker.style.setProperty('width', this.pickerStyle.width)
+                    } else {
+                        // @ts-ignore
+                        this.picker.style.setProperty(`--${toDashes(key)}`, this.pickerStyle[key])
+                    }
+                })
+            }
         }
     },
-    data: () => ({
-        picker: new Picker()
-    }),
     mounted() {
         const root = this.$refs.root as HTMLDivElement
         this.updatePickerProps()
@@ -78,25 +94,6 @@ export default defineComponent({
     beforeUnmount() {
         this.picker.removeEventListener('emoji-click', this.handleClick)
         this.picker.removeEventListener('skin-tone-change', this.handleSkinToneChange)
-    },
-    computed: {
-        computedStyle() {
-            if (this.pickerStyle && typeof this.pickerStyle === 'object') {
-                const style: Record<any, any> = {}
-                Object.keys(this.pickerStyle).forEach((key) => {
-                    if (key === 'height' || key === 'width') {
-                        style[key] = this.pickerStyle?.[key]
-                    } else {
-                        // @ts-ignore
-                        style[`--${toDashes(key)}`] = this.pickerStyle[key]
-                    }
-                    
-                })
-                return style
-            }
-
-            return {}
-        }
     },
     watch: {
         $props: {
