@@ -87,7 +87,8 @@ export default defineComponent({
     mounted() {
         const root = this.$refs.root as HTMLDivElement
         this.updatePickerProps()
-        root.appendChild(this.picker as Node)
+        // @ts-ignore
+        root.appendChild(this.picker)
         this.picker.addEventListener('emoji-click', this.handleClick)
         this.picker.addEventListener('skin-tone-change', this.handleSkinToneChange)
     },
