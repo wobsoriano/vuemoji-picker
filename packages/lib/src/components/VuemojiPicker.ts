@@ -4,8 +4,7 @@ import type {
     SkinToneChangeEvent,
     PickerConstructorOptions,
 } from 'emoji-picker-element/shared'
-import type { Picker } from 'emoji-picker-element'
-import('emoji-picker-element/picker')
+import Picker from 'emoji-picker-element/picker'
 import h from '../utils/h-demi'
 import isDarkMode from '../utils/dark-mode'
 import toDashes from '../utils/to-dashes'
@@ -33,17 +32,52 @@ export default defineComponent({
         },
         handleSkinToneChange(event: SkinToneChangeEvent) {
             this.$emit('skinToneChange', event.detail)
+        },
+        updatePickerProps() {
+            const {
+                skinToneEmoji,
+                dataSource,
+                locale,
+                customEmoji,
+                i18n,
+                customCategorySorting,
+                isDark
+            } = this.$props
+            if (skinToneEmoji) {
+                this.picker.skinToneEmoji = skinToneEmoji
+            }
+            if (dataSource) {
+                this.picker.dataSource = dataSource
+            }
+            if (locale) {
+                this.picker.locale = locale
+            }
+            if (customEmoji) {
+                this.picker.customEmoji = customEmoji
+            }
+            if (i18n) {
+                this.picker.i18n = i18n
+            }
+            if (customCategorySorting) {
+                this.picker.customCategorySorting = customCategorySorting
+            }
+            this.picker.classList.toggle('dark', isDark)
+            this.picker.classList.toggle('light', !isDark)
         }
     },
+    data: () => ({
+        picker: new Picker()
+    }),
     mounted() {
-        const picker = this.$refs.picker as Picker
-        picker.addEventListener('emoji-click', this.handleClick)
-        picker.addEventListener('skin-tone-change', this.handleSkinToneChange)
+        const root = this.$refs.root as HTMLDivElement
+        this.updatePickerProps()
+        root.appendChild(this.picker as Node)
+        this.picker.addEventListener('emoji-click', this.handleClick)
+        this.picker.addEventListener('skin-tone-change', this.handleSkinToneChange)
     },
     beforeUnmount() {
-        const picker = this.$refs.picker as Picker
-        picker.removeEventListener('emoji-click', this.handleClick)
-        picker.removeEventListener('skin-tone-change', this.handleSkinToneChange)
+        this.picker.removeEventListener('emoji-click', this.handleClick)
+        this.picker.removeEventListener('skin-tone-change', this.handleSkinToneChange)
     },
     computed: {
         computedStyle() {
@@ -65,55 +99,16 @@ export default defineComponent({
         }
     },
     watch: {
-        customEmoji: {
-            immediate: true,
-            handler(newValue) {
-                if (this.$refs.picker && newValue) {
-                    (this.$refs.picker as Picker).customEmoji = newValue;
-                }
-            }
-        },
-        i18n: {
-            immediate: true,
-            handler(newValue) {
-                if (this.$refs.picker && newValue) {
-                    (this.$refs.picker as Picker).i18n = newValue;
-                }
-            }
-        },
-        customCategorySorting: {
-            immediate: true,
-            handler(newValue) {
-                if (this.$refs.picker && newValue) {
-                    (this.$refs.picker as Picker).customCategorySorting = newValue;
-                }
-            }
+        $props: {
+            handler() {
+                this.updatePickerProps()
+            },
+            deep: true
         }
     },
     render() {
-        const {
-            skinToneEmoji,
-            dataSource,
-            locale,
-            isDark
-        } = this
-        const props: Record<string, string> = {}
-        if (skinToneEmoji) {
-            props['skin-tone-emoji'] = skinToneEmoji
-        }
-        if (dataSource) {
-            props['data-source'] = dataSource
-        }
-        if (locale) {
-            props.locale = locale
-        }
-
-        
-        return h('emoji-picker', {
-            ref: 'picker',
-            class: isDark ? 'dark' : 'light',
-            style: this.computedStyle,
-            ...props
+        return h('div', {
+            ref: 'root'
         })
     }
 })
