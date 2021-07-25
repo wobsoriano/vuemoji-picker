@@ -19,7 +19,7 @@
     "switch:3": "vue-demi-switch 3"
   },
   "dependencies": {
-    "emoji-picker-element": "^1.6.4",
+    "emoji-picker-element": "^1.6.5",
     "vue-demi": "^0.11.2"
   },
   "peerDependencies": {
