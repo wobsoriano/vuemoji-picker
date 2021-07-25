@@ -292,10 +292,10 @@ email-addresses@^3.0.1:
   resolved "https://registry.yarnpkg.com/email-addresses/-/email-addresses-3.1.0.tgz#cabf7e085cbdb63008a70319a74e6136188812fb"
   integrity sha512-k0/r7GrWVL32kZlGwfPNgB2Y/mMXVTq/decgLczm/j34whdaspNrZO8CnXPf1laaHxI6ptUlsnAxN+UAPw+fzg==
 
-emoji-picker-element@^1.6.4:
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/emoji-picker-element/-/emoji-picker-element-1.6.4.tgz#618db8e2d9bb4420f6cecf0e94e91c1f526df578"
-  integrity sha512-KSSj9ri/0mOUv6Hylg/UU00lXVSuNPLRT8Cy7K2ktbkk7YZYcCnt4jSLuOAFnLiNQvCRpnvxVtgM+g81tc0JGA==
+emoji-picker-element@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/emoji-picker-element/-/emoji-picker-element-1.6.5.tgz#1cae24597016673f0e7165e80a81dfe6feb73b51"
+  integrity sha512-3NElWImgmus9gqIg1aX2TlU3u6Qht37pHQHLGro75jGOlp87N8YJ6zvYETjRvnPiJ1rPgB0rhtBFwAMrtw1y6A==
 
 emojis-list@^3.0.0:
   version "3.0.0"
@@ -934,6 +934,12 @@ vue@^3.0.11, vue@^3.0.5:
     "@vue/compiler-dom" "3.1.5"
     "@vue/runtime-dom" "3.1.5"
     "@vue/shared" "3.1.5"
+
+vuemoji-picker@0.0.1:
+  version "0.0.6"
+  dependencies:
+    emoji-picker-element "^1.6.5"
+    vue-demi "^0.11.2"
 
 wrappy@1:
   version "1.0.2"
