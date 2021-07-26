@@ -69,7 +69,7 @@ Name | Type | Default | Description |
 Use the [Database API](https://github.com/nolanlawson/emoji-picker-element#database) as a composable.
 
 ```js
-import { defineComponent, ref } from 'vue' // @vue/composition-api for Vue 2
+import { defineComponent } from 'vue' // @vue/composition-api for Vue 2
 import { useDatabase } from 'vuemoji-picker'
 
 export default defineComponent({
