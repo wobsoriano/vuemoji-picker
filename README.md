@@ -89,3 +89,6 @@ export default defineComponent({
 ```
 
 For more information about available styling and offline config, please read [emoji-picker-element's docs](https://github.com/nolanlawson/emoji-picker-element).
+
+## License
+MIT - Copyright (c) 2021 [Robert Soriano](https://github.com/wobsoriano)
