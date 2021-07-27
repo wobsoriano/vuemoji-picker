@@ -66,21 +66,21 @@ export default defineComponent({
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`isDark` | Boolean | system | Set picker theme  |
-`customCategorySorting` | Function | - | Function to sort custom category strings (sorted alphabetically by default)  |
-`customEmoji` | CustomEmoji[] | - | Array of custom emoji |
-`dataSource` | String | "https://cdn.jsdelivr.net/npm/emoji-picker-element-data@^1/en/emojibase/data.json" | URL to fetch the emoji data from |
-`i18n` | I18n | - | i18n object ([see details](https://github.com/nolanlawson/emoji-picker-element#i18n-structure)) |
-`locale` | String | "en" | Locale string |
-`skinToneEmoji` | String | "🖐️" | The emoji to use for the skin tone picker |
-`pickerStyle` | VuemojiPickerStyle | - | [style object](https://github.com/nolanlawson/emoji-picker-element#styling) ([see available options](https://github.com/wobsoriano/vuemoji-picker/blob/master/packages/lib/src/index.ts#L4)) |
+`isDark` | `Boolean` | system | Set picker theme  |
+`customCategorySorting` | `Function` | - | Function to sort custom category strings (sorted alphabetically by default)  |
+`customEmoji` | `CustomEmoji[]` | - | Array of custom emoji |
+`dataSource` | `String` | "https://cdn.jsdelivr.net/npm/emoji-picker-element-data@^1/en/emojibase/data.json" | URL to fetch the emoji data from |
+`i18n` | `I18n` | - | i18n object ([see details](https://github.com/nolanlawson/emoji-picker-element#i18n-structure)) |
+`locale` | `String` | "en" | Locale string |
+`skinToneEmoji` | `String` | "🖐️" | The emoji to use for the skin tone picker |
+`pickerStyle` | `VuemojiPickerStyle` | - | [style object](https://github.com/nolanlawson/emoji-picker-element#styling) ([see available options](https://github.com/wobsoriano/vuemoji-picker/blob/master/packages/lib/src/index.ts#L4)) |
 
 ## Events
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`emojiClick` | Function | - | Fired when an emoji is selected  |
-`skinToneChange` | Function | - | Fired when a new skin tone is selected  |
+`emojiClick` | `Function` | - | Fired when an emoji is selected  |
+`skinToneChange` | `Function` | - | Fired when a new skin tone is selected  |
 
 ## Database API Composable
 
