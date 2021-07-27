@@ -24,8 +24,8 @@ Options API
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import { VuemojiPicker, EmojiClickEventDetail } from 'vuemoji-picker';
+import Vue from 'vue'
+import { VuemojiPicker, EmojiClickEventDetail } from 'vuemoji-picker'
 
 export default Vue.extend({
   components: {
