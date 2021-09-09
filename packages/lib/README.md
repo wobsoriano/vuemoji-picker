@@ -45,20 +45,10 @@ Composition API
     <VuemojiPicker @emojiClick="handleEmojiClick" />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import { VuemojiPicker, EmojiClickEventDetail } from 'vuemoji-picker'
 
-export default defineComponent({
-    components: { VuemojiPicker },
-    setup() {
-        const handleEmojiClick = (detail: EmojiClickEventDetail) => {}
-
-        return {
-            handleEmojiClick
-        }
-    }
-})
+const handleEmojiClick = (detail: EmojiClickEventDetail) => {}
 </script>
 ```
 
