@@ -14,42 +14,16 @@ yarn add vuemoji-picker
 
 ## Usage
 
-Options API
-
 ```html
-<template>
-  <div id="app">
-    <VuemojiPicker @emojiClick="handleEmojiClick" />
-  </div>
-</template>
-
-<script lang="ts">
-import Vue from 'vue'
-import { VuemojiPicker, EmojiClickEventDetail } from 'vuemoji-picker'
-
-export default Vue.extend({
-  components: {
-    VuemojiPicker
-  },
-  methods: {
-    handleEmojiClick(detail: EmojiClickEventDetail) {}
-  }
-});
-</script>
-```
-
-Composition API
-
-```html
-<template>
-    <VuemojiPicker @emojiClick="handleEmojiClick" />
-</template>
-
 <script setup lang="ts">
 import { VuemojiPicker, EmojiClickEventDetail } from 'vuemoji-picker'
 
 const handleEmojiClick = (detail: EmojiClickEventDetail) => {}
 </script>
+
+<template>
+    <VuemojiPicker @emojiClick="handleEmojiClick" />
+</template>
 ```
 
 ## Props
