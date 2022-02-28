@@ -1,13 +1,18 @@
 {
   "name": "monorepo",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "dev": "yarn workspace example dev",
-    "lib:watch": "yarn workspace vuemoji-picker run build:watch",
-    "lib": "yarn workspace vuemoji-picker",
-    "example": "yarn workspace example"
+    "lib": "pnpm -C packages/lib",
+    "example": "pnpm -C packages/example",
+    "clean": "rm -rf node_modules && pnpm -r clean"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.2.31",
+    "typescript": "^4.5.3",
+    "vue": "^3.2.31"
   }
 }
