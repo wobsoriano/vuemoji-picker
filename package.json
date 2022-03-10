@@ -6,10 +6,6 @@
     "playground": "pnpm -C apps/web",
     "clean": "rm -rf node_modules && pnpm -r clean"
   },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.3",
     "@vue/compiler-sfc": "^3.2.31",
