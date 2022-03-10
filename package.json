@@ -11,8 +11,27 @@
     "singleQuote": true
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.18.3",
     "@vue/compiler-sfc": "^3.2.31",
+    "eslint": "^8.10.0",
+    "lint-staged": "^12.3.5",
+    "simple-git-hooks": "^2.7.0",
     "typescript": "^4.5.3",
     "vue": "^3.2.31"
+  },
+  "eslintConfig": {
+    "extends": "@antfu"
+  },
+  "eslintIgnore": [
+    "dist",
+    "node_modules"
+  ],
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "{packages/apps}/**/*.{js,ts,vue,md,html}": [
+      "eslint --fix"
+    ]
   }
 }
