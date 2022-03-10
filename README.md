@@ -9,7 +9,7 @@ A simple Vue 2 and 3 wrapper component for [emoji-picker-element](https://github
 ## Install
 
 ```bash
-yarn add vuemoji-picker
+pnpm add vuemoji-picker
 ```
 
 ## Usage
@@ -55,18 +55,18 @@ import { defineComponent } from 'vue' // @vue/composition-api for Vue 2
 import { useDatabase } from 'vuemoji-picker'
 
 export default defineComponent({
-    setup() {
-        const database = useDatabase()
-        
-        const searchEmoji = async () => {
-            const result = await database.getEmojiBySearchQuery('elephant')
-            // [{unicode: "🐘", ...}]
-        }
+  setup() {
+    const database = useDatabase()
 
-        return {
-            searchEmoji
-        }
+    const searchEmoji = async() => {
+      const result = await database.getEmojiBySearchQuery('elephant')
+      // [{unicode: "🐘", ...}]
     }
+
+    return {
+      searchEmoji,
+    }
+  },
 })
 ```
 
