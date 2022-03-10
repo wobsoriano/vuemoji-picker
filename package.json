@@ -30,7 +30,7 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "{packages/apps}/**/*.{js,ts,vue,md,html}": [
+    "{packages,apps}/**/*.{js,ts,vue,md,html}": [
       "eslint --fix"
     ]
   }
