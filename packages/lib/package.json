@@ -18,6 +18,7 @@
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf node_modules dist",
+    "release": "bumpp --commit --push --tag && pnpm publish",
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
