@@ -4,7 +4,14 @@
   "scripts": {
     "lib": "pnpm -C packages/lib",
     "playground": "pnpm -C apps/web",
-    "clean": "rm -rf node_modules && pnpm -r clean"
+    "clean": "rm -rf node_modules && pnpm -r clean",
+    "lint": "eslint --ext=js,ts,vue,md,json .",
+    "lint:fix": "pnpm lint --fix"
+  },
+  "lint-staged": {
+    "{packages,apps}/**/*.{js,ts,vue,md,html}": [
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.3",
@@ -24,10 +31,5 @@
   ],
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "{packages,apps}/**/*.{js,ts,vue,md,html}": [
-      "eslint --fix"
-    ]
   }
 }

@@ -1,10 +1,12 @@
 <template>
   <section aria-label="GitHub link">
     <a class="github-banner" href="https://github.com/wobsoriano/vuemoji-picker">
-      <img width="149" height="149"
-          src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149"
-          class="attachment-full size-full" alt="Fork me on GitHub"
-          data-recalc-dims="1">
+      <img
+        width="149" height="149"
+        src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149"
+        class="attachment-full size-full" alt="Fork me on GitHub"
+        data-recalc-dims="1"
+      >
     </a>
   </section>
   <main>
@@ -18,35 +20,39 @@
       </div>
       <div>
         <div class="p-20px">
-          <div style="margin-bottom: 10px;">Dark mode:</div>
+          <div style="margin-bottom: 10px;">
+            Dark mode:
+          </div>
           <label>
-            <input type="radio" value="auto" v-model="darkMode">
+            <input v-model="darkMode" type="radio" value="auto">
             Auto
           </label>
           <label>
-            <input type="radio" value="dark" v-model="darkMode">
+            <input v-model="darkMode" type="radio" value="dark">
             Dark
           </label>
           <label>
-            <input type="radio" value="light" v-model="darkMode">
+            <input v-model="darkMode" type="radio" value="light">
             Light
           </label>
         </div>
         <div class="p-20px">
           <label>
-          <input type="checkbox" v-model="useCustomEmoji"> Custom emoji
+            <input v-model="useCustomEmoji" type="checkbox"> Custom emoji
           </label>
         </div>
         <div class="p-20px" role="alert" aria-live="polite">
-          <pre v-if="eventDetail" v-text="eventDetail"></pre>
+          <pre v-if="eventDetail" v-text="eventDetail" />
         </div>
-        <div class="private-browsing-warning"
+        <div
+          class="private-browsing-warning"
           style="padding: 20px; display: none; border: 2px dashed crimson;"
-          role="alert">
+          role="alert"
+        >
           Note that <code>emoji-picker-element</code> does not support environments without IndexedDB. For polyfills
           and workarounds, see
           <a href="https://github.com/nolanlawson/emoji-picker-element/blob/master/README.md#environments-without-indexeddb">
-          the README
+            the README
           </a>.
         </div>
       </div>
@@ -55,39 +61,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { computed, ref, watch } from 'vue'
 import type {
-  SkinToneChangeEventDetail,
-  EmojiClickEventDetail,
   CustomEmoji,
-  VuemojiPickerStyle
+  EmojiClickEventDetail,
+  SkinToneChangeEventDetail,
+  VuemojiPickerStyle,
 } from 'vuemoji-picker'
 import { VuemojiPicker } from 'vuemoji-picker'
 
 interface Result {
   Symbols: string[]
-  "Technical and software": string[]
-  "Film and Photography": string[]
+  'Technical and software': string[]
+  'Film and Photography': string[]
   Arrows: string[]
   Time: string[]
   Business: string[]
-  "People and activities": string[]
-  "": string[]
+  'People and activities': string[]
+  '': string[]
   Academic: string[]
 }
 
 const baseUrl = 'https://raw.githubusercontent.com/nolanlawson/emoji-picker-element/master/docs'
 
-async function loadCustomEmoji (): Promise<any> {
+async function loadCustomEmoji(): Promise<any> {
   const categoriesToCustomEmoji = (await (await fetch(`${baseUrl}/custom.json`)).json() as Result)
-  const customEmojiData: CustomEmoji[] = [];
-  for (const [ category, names ] of Object.entries(categoriesToCustomEmoji)) {
+  const customEmojiData: CustomEmoji[] = []
+  for (const [category, names] of Object.entries(categoriesToCustomEmoji)) {
     for (const name of names) {
       customEmojiData.push({
         category: category || undefined,
         name,
         shortcodes: [name],
-        url: `${baseUrl}/custom/${name}.svg`
+        url: `${baseUrl}/custom/${name}.svg`,
       })
     }
   }
@@ -101,7 +107,7 @@ const eventDetail = ref<string>()
 
 const style = ref<VuemojiPickerStyle>({
   height: '400px',
-  width: '400px'
+  width: '400px',
 })
 
 const isDark = computed(() => {
@@ -109,12 +115,12 @@ const isDark = computed(() => {
   return darkMode.value === 'dark'
 })
 
-watch(useCustomEmoji, async (checked) => {
-  if (checked) {
+watch(useCustomEmoji, async(checked) => {
+  if (checked)
     customEmoji.value = await loadCustomEmoji()
-  } else {
+
+  else
     customEmoji.value = []
-  }
 })
 
 const onEmojiClick = (detail: EmojiClickEventDetail) => {
