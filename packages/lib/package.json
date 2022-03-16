@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "emoji-picker-element": "^1.10.1",
-    "vue-demi": "^0.12.1"
+    "vue-demi": "^0.12.4"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.2.31",
