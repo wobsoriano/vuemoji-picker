@@ -1,5 +1,5 @@
 import type { PropType } from 'vue-demi'
-import { Vue2, defineComponent } from 'vue-demi'
+import { Vue2, defineComponent, isVue2 } from 'vue-demi'
 import type {
   EmojiClickEvent,
   PickerConstructorOptions,
@@ -12,7 +12,7 @@ import isDarkMode from '../utils/dark-mode'
 import toDashes from '../utils/to-dashes'
 import type { VuemojiPickerStyle } from '../'
 
-if (Vue2)
+if (isVue2)
   Vue2.config.ignoredElements.push('emoji-picker')
 
 export default defineComponent({
