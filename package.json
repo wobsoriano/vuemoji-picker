@@ -8,11 +8,6 @@
     "lint": "eslint --ext=js,ts,vue,md,json .",
     "lint:fix": "pnpm lint --fix"
   },
-  "lint-staged": {
-    "{packages,apps}/**/*.{js,ts,vue,md,html}": [
-      "eslint --fix"
-    ]
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",
     "@vue/compiler-sfc": "^3.2.31",
@@ -21,6 +16,11 @@
     "simple-git-hooks": "^2.7.0",
     "typescript": "^4.5.3",
     "vue": "^3.2.31"
+  },
+  "lint-staged": {
+    "{packages,apps}/**/*.{js,ts,vue,md,html}": [
+      "eslint --fix"
+    ]
   },
   "eslintConfig": {
     "extends": "@antfu"
