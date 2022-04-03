@@ -6,4 +6,5 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   external: ['emoji-picker-element/database'],
   dts: true,
+  minify: true,
 })
