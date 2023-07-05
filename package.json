@@ -29,7 +29,9 @@
     "dev:build": "vite build dev",
     "dev:preview": "vite preview dev",
     "lint": "eslint .",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "release": "bumpp && npm publish",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.4.0",
