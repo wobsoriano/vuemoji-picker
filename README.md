@@ -2,7 +2,7 @@
 
 A simple Vue 2 and 3 wrapper component for [emoji-picker-element](https://github.com/nolanlawson/emoji-picker-element).
 
-[Live Demo](https://wobsoriano.github.io/vuemoji-picker/)
+[Live Demo](https://vuemoji-picker.vercel.app/)
 
 ![Demo of vuemoji-picker](https://i.imgur.com/6CcJxLW.gif)
 
