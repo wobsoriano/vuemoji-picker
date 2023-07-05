@@ -52,6 +52,7 @@ Set of composables that wraps [Database API](https://github.com/nolanlawson/emoj
 
 ```vue
 <script setup>
+import { ref } from 'vue'
 import {
   useEmojiByGroup,
   useEmojiBySearchQuery,
@@ -59,10 +60,8 @@ import {
   useEmojiByUnicodeOrName
 } from 'vuemoji-picker'
 
-const { result: nativeEmojis } = useEmojiByGroup()
-const { result: emojis } = useEmojiBySearchQuery()
-const { result: emoji } = useEmojiByShortcode()
-const { result: emoji } = useEmojiByUnicodeOrName()
+const query = ref('elephant')
+const { result, loading } = useEmojiBySearchQuery(query)
 </script>
 ```
 
