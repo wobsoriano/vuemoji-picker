@@ -1,5 +1,4 @@
 import VuemojiPicker from './components/VuemojiPicker'
-import useDatabase from './composables/useDatabase'
 
 export interface VuemojiPickerStyle {
   width?: string
@@ -42,7 +41,9 @@ export type {
   SkinToneChangeEventDetail,
   CustomEmoji,
 } from 'emoji-picker-element/shared'
+
 export {
   VuemojiPicker,
-  useDatabase,
 }
+
+export * from './composables/useDatabase'

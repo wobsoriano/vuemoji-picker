@@ -46,28 +46,24 @@ Name | Type | Default | Description |
 `emojiClick` | `Function` | - | Fired when an emoji is selected  |
 `skinToneChange` | `Function` | - | Fired when a new skin tone is selected  |
 
-## Database API Composable
+## Composables
 
-Use the [Database API](https://github.com/nolanlawson/emoji-picker-element#database) as a composable.
+Set of composables that wraps [Database API](https://github.com/nolanlawson/emoji-picker-element#database) methods.
 
-```js
-import { defineComponent } from 'vue' // @vue/composition-api for Vue 2
-import { useDatabase } from 'vuemoji-picker'
+```vue
+<script setup>
+import {
+  useEmojiByGroup,
+  useEmojiBySearchQuery,
+  useEmojiByShortcode,
+  useEmojiByUnicodeOrName
+} from 'vuemoji-picker'
 
-export default defineComponent({
-  setup() {
-    const database = useDatabase()
-
-    const searchEmoji = async() => {
-      const result = await database.getEmojiBySearchQuery('elephant')
-      // [{unicode: "🐘", ...}]
-    }
-
-    return {
-      searchEmoji,
-    }
-  },
-})
+const { result: nativeEmojis } = useEmojiByGroup()
+const { result: emojis } = useEmojiBySearchQuery()
+const { result: emoji } = useEmojiByShortcode()
+const { result: emoji } = useEmojiByUnicodeOrName()
+</script>
 ```
 
 For more information about available styling and offline config, please read [emoji-picker-element's docs](https://github.com/nolanlawson/emoji-picker-element).
