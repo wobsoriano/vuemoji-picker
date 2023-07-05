@@ -1,3 +1,74 @@
+<script setup lang="ts">
+import { computed, ref, watch } from 'vue'
+import type {
+  CustomEmoji,
+  EmojiClickEventDetail,
+  SkinToneChangeEventDetail,
+  VuemojiPickerStyle,
+} from 'vuemoji-picker'
+import { VuemojiPicker } from 'vuemoji-picker'
+
+interface Result {
+  Symbols: string[]
+  'Technical and software': string[]
+  'Film and Photography': string[]
+  Arrows: string[]
+  Time: string[]
+  Business: string[]
+  'People and activities': string[]
+  '': string[]
+  Academic: string[]
+}
+
+const baseUrl = 'https://raw.githubusercontent.com/nolanlawson/emoji-picker-element/master/docs'
+
+async function loadCustomEmoji() {
+  const categoriesToCustomEmoji = (await (await fetch(`${baseUrl}/custom.json`)).json() as Result)
+  const customEmojiData: CustomEmoji[] = []
+  for (const [category, names] of Object.entries(categoriesToCustomEmoji)) {
+    for (const name of names) {
+      customEmojiData.push({
+        category: category || undefined,
+        name,
+        shortcodes: [name],
+        url: `${baseUrl}/custom/${name}.svg`,
+      })
+    }
+  }
+  return customEmojiData
+}
+
+const useCustomEmoji = ref(false)
+const customEmoji = ref<CustomEmoji[]>([])
+const darkMode = ref('auto')
+const eventDetail = ref<string>()
+
+const style = ref<VuemojiPickerStyle>({
+  height: '400px',
+  width: '400px',
+})
+
+const isDark = computed(() => {
+  if (darkMode.value === 'auto') return
+  return darkMode.value === 'dark'
+})
+
+watch(useCustomEmoji, async (checked) => {
+  if (checked)
+    customEmoji.value = await loadCustomEmoji()
+  else
+    customEmoji.value = []
+})
+
+const onEmojiClick = (detail: EmojiClickEventDetail) => {
+  eventDetail.value = `Event: @emojiClick\n\nData:\n\n${JSON.stringify(detail, null, 2)}`
+}
+
+const onSkinToneChange = (detail: SkinToneChangeEventDetail) => {
+  eventDetail.value = `Event: @skinToneChange\n\nData:\n\n${JSON.stringify(detail, null, 2)}`
+}
+</script>
+
 <template>
   <section aria-label="GitHub link">
     <a class="github-banner" href="https://github.com/wobsoriano/vuemoji-picker">
@@ -59,78 +130,6 @@
     </div>
   </main>
 </template>
-
-<script setup lang="ts">
-import { computed, ref, watch } from 'vue'
-import type {
-  CustomEmoji,
-  EmojiClickEventDetail,
-  SkinToneChangeEventDetail,
-  VuemojiPickerStyle,
-} from 'vuemoji-picker'
-import { VuemojiPicker } from 'vuemoji-picker'
-
-interface Result {
-  Symbols: string[]
-  'Technical and software': string[]
-  'Film and Photography': string[]
-  Arrows: string[]
-  Time: string[]
-  Business: string[]
-  'People and activities': string[]
-  '': string[]
-  Academic: string[]
-}
-
-const baseUrl = 'https://raw.githubusercontent.com/nolanlawson/emoji-picker-element/master/docs'
-
-async function loadCustomEmoji(): Promise<any> {
-  const categoriesToCustomEmoji = (await (await fetch(`${baseUrl}/custom.json`)).json() as Result)
-  const customEmojiData: CustomEmoji[] = []
-  for (const [category, names] of Object.entries(categoriesToCustomEmoji)) {
-    for (const name of names) {
-      customEmojiData.push({
-        category: category || undefined,
-        name,
-        shortcodes: [name],
-        url: `${baseUrl}/custom/${name}.svg`,
-      })
-    }
-  }
-  return customEmojiData
-}
-
-const useCustomEmoji = ref(false)
-const customEmoji = ref<CustomEmoji[]>([])
-const darkMode = ref('auto')
-const eventDetail = ref<string>()
-
-const style = ref<VuemojiPickerStyle>({
-  height: '400px',
-  width: '400px',
-})
-
-const isDark = computed(() => {
-  if (darkMode.value === 'auto') return
-  return darkMode.value === 'dark'
-})
-
-watch(useCustomEmoji, async(checked) => {
-  if (checked)
-    customEmoji.value = await loadCustomEmoji()
-
-  else
-    customEmoji.value = []
-})
-
-const onEmojiClick = (detail: EmojiClickEventDetail) => {
-  eventDetail.value = `Event: @emojiClick\n\nData:\n\n${JSON.stringify(detail, null, 2)}`
-}
-
-const onSkinToneChange = (detail: SkinToneChangeEventDetail) => {
-  eventDetail.value = `Event: @skinToneChange\n\nData:\n\n${JSON.stringify(detail, null, 2)}`
-}
-</script>
 
 <style>
 .p-20px {

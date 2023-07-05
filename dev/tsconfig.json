@@ -4,7 +4,8 @@
     "types": ["vite/client"],
     "paths": {
       "vuemoji-picker": ["../src"]
-    }
+    },
+    "lib": ["esnext", "DOM"]
   },
   "include": ["./**/*"]
 }
