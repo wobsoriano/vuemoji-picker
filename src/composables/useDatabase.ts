@@ -1,6 +1,6 @@
 import Database from 'emoji-picker-element/database'
 import type { Emoji, NativeEmoji } from 'emoji-picker-element/shared'
-import { ref, unref, watchPostEffect, type MaybeRef } from 'vue-demi'
+import { ref, unref, watchPostEffect, type MaybeRef, watchEffect, onMounted } from 'vue-demi'
 
 export function useDatabase() {
   return new Database()
@@ -11,17 +11,26 @@ export function useDatabase() {
  */
 export function useEmojiBySearchQuery(query: MaybeRef<string>) {
   const db = useDatabase()
+  const isMounted = ref(false)
   const result = ref<Emoji[]>([])
   const loading = ref(false)
 
-  watchPostEffect(async () => {
+  onMounted(() => {
+    isMounted.value = true
+  })
+
+  watchEffect(async () => {
+    if (!isMounted.value) return
+
     loading.value = true
     result.value = []
     try {
       result.value = await db.getEmojiBySearchQuery(unref(query))
     }
     catch {}
-    loading.value = false
+    finally {
+      loading.value = false
+    }
   })
 
   return {
