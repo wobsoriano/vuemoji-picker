@@ -1,6 +1,6 @@
 import Database from 'emoji-picker-element/database'
 import type { Emoji, NativeEmoji } from 'emoji-picker-element/shared'
-import { ref, unref, watchPostEffect, type MaybeRef, watchEffect, onMounted } from 'vue-demi'
+import { ref, unref, type MaybeRef, watchEffect, onMounted } from 'vue-demi'
 
 export function useDatabase() {
   return new Database()
