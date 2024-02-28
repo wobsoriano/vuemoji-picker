@@ -9,7 +9,7 @@ A simple Vue 2 and 3 wrapper component for [emoji-picker-element](https://github
 ## Install
 
 ```bash
-pnpm add vuemoji-picker
+npm install vuemoji-picker
 ```
 
 ## Usage
