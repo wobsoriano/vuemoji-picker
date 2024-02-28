@@ -6,12 +6,20 @@ export function useDatabase() {
   return new Database()
 }
 
+function useMounted() {
+  const isMounted = ref(false)
+  onMounted(() => {
+    isMounted.value = true
+  })
+  return isMounted
+}
+
 /**
  * Returns all emoji matching the given search query, ordered by order.
  */
 export function useEmojiBySearchQuery(query: MaybeRef<string>) {
   const db = useDatabase()
-  const isMounted = ref(false)
+  const isMounted = useMounted()
   const result = ref<Emoji[]>([])
   const loading = ref(false)
 
@@ -44,10 +52,13 @@ export function useEmojiBySearchQuery(query: MaybeRef<string>) {
  */
 export function useEmojiByGroup(group: MaybeRef<number>) {
   const db = useDatabase()
+  const isMounted = useMounted()
   const result = ref<NativeEmoji[]>([])
   const loading = ref(false)
 
-  watchPostEffect(async () => {
+  watchEffect(async () => {
+    if (!isMounted.value) return
+
     loading.value = true
     result.value = []
     try {
@@ -68,10 +79,13 @@ export function useEmojiByGroup(group: MaybeRef<number>) {
  */
 export function useEmojiByShortcode(shortcode: MaybeRef<string>) {
   const db = useDatabase()
+  const isMounted = useMounted()
   const result = ref<Emoji | null>(null)
   const loading = ref(false)
 
-  watchPostEffect(async () => {
+  watchEffect(async () => {
+    if (!isMounted.value) return
+
     loading.value = true
     result.value = null
     try {
@@ -92,10 +106,13 @@ export function useEmojiByShortcode(shortcode: MaybeRef<string>) {
  */
 export function useEmojiByUnicodeOrName(unicodeOrName: MaybeRef<string>) {
   const db = useDatabase()
+  const isMounted = useMounted()
   const result = ref<Emoji | null>(null)
   const loading = ref(false)
 
-  watchPostEffect(async () => {
+  watchEffect(async () => {
+    if (!isMounted.value) return
+
     loading.value = true
     result.value = null
     try {
