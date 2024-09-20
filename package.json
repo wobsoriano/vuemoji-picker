@@ -3,15 +3,26 @@
   "type": "module",
   "version": "0.3.0",
   "description": "Vue 2 and 3 lightweight emoji picker.",
+  "license": "MIT",
+  "homepage": "https://github.com/wobsoriano/vuemoji-picker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wobsoriano/vuemoji-picker.git"
+  },
   "keywords": [
     "vue",
     "emoji",
     "picker"
   ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wobsoriano/vuemoji-picker.git"
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/index.d.ts",
+        "require": "./dist/index.d.cts"
+      },
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -22,16 +33,6 @@
         "./dist/*",
         "./*"
       ]
-    }
-  },
-  "exports": {
-    ".": {
-      "types": {
-        "import": "./dist/index.d.ts",
-        "require": "./dist/index.d.cts"
-      },
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
     }
   },
   "files": [
@@ -72,6 +73,5 @@
     "typescript": "^5.6.2",
     "vite": "^5.1.8",
     "vue": "^3.5.6"
-  },
-  "homepage": "https://github.com/wobsoriano/vuemoji-picker#readme"
+  }
 }

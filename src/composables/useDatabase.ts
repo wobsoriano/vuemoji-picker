@@ -1,6 +1,6 @@
-import Database from 'emoji-picker-element/database'
 import type { Emoji, NativeEmoji } from 'emoji-picker-element/shared'
-import { ref, unref, type MaybeRef, watchEffect, onMounted } from 'vue-demi'
+import Database from 'emoji-picker-element/database'
+import { type MaybeRef, onMounted, ref, unref, watchEffect } from 'vue-demi'
 
 export function useDatabase() {
   return new Database()
@@ -23,12 +23,9 @@ export function useEmojiBySearchQuery(query: MaybeRef<string>) {
   const result = ref<Emoji[]>([])
   const loading = ref(false)
 
-  onMounted(() => {
-    isMounted.value = true
-  })
-
   watchEffect(async () => {
-    if (!isMounted.value) return
+    if (!isMounted.value)
+      return
 
     loading.value = true
     result.value = []
@@ -57,7 +54,8 @@ export function useEmojiByGroup(group: MaybeRef<number>) {
   const loading = ref(false)
 
   watchEffect(async () => {
-    if (!isMounted.value) return
+    if (!isMounted.value)
+      return
 
     loading.value = true
     result.value = []
@@ -84,7 +82,8 @@ export function useEmojiByShortcode(shortcode: MaybeRef<string>) {
   const loading = ref(false)
 
   watchEffect(async () => {
-    if (!isMounted.value) return
+    if (!isMounted.value)
+      return
 
     loading.value = true
     result.value = null
@@ -111,7 +110,8 @@ export function useEmojiByUnicodeOrName(unicodeOrName: MaybeRef<string>) {
   const loading = ref(false)
 
   watchEffect(async () => {
-    if (!isMounted.value) return
+    if (!isMounted.value)
+      return
 
     loading.value = true
     result.value = null

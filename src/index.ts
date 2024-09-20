@@ -29,21 +29,21 @@ export interface VuemojiPickerStyle {
   skintoneBorderRadius?: string
 }
 
-export type {
-  SkinTone,
-  NativeEmoji,
-  EmojiSkin,
-  DatabaseConstructorOptions,
-  PickerConstructorOptions,
-  I18n,
-  I18nCategories,
-  EmojiClickEventDetail,
-  SkinToneChangeEventDetail,
-  CustomEmoji,
-} from 'emoji-picker-element/shared'
+export * from './composables/useDatabase'
 
 export {
   VuemojiPicker,
 }
 
-export * from './composables/useDatabase'
+export type {
+  CustomEmoji,
+  DatabaseConstructorOptions,
+  EmojiClickEventDetail,
+  EmojiSkin,
+  I18n,
+  I18nCategories,
+  NativeEmoji,
+  PickerConstructorOptions,
+  SkinTone,
+  SkinToneChangeEventDetail,
+} from 'emoji-picker-element/shared'

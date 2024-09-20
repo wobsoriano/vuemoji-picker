@@ -1,11 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": ["vite/client"],
+    "lib": ["esnext", "DOM"],
     "paths": {
       "vuemoji-picker": ["../src"]
     },
-    "lib": ["esnext", "DOM"]
+    "types": ["vite/client"]
   },
   "include": ["./**/*"]
 }
