@@ -15,8 +15,8 @@ importers:
         specifier: ^1.22.7
         version: 1.22.7
       vue-demi:
-        specifier: ^0.14.7
-        version: 0.14.7(@vue/composition-api@1.7.2(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))
+        specifier: ^0.14.10
+        version: 0.14.10(@vue/composition-api@1.7.2(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.6.4
@@ -2582,8 +2582,8 @@ packages:
       terser:
         optional: true
 
-  vue-demi@0.14.5:
-    resolution: {integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==}
+  vue-demi@0.14.10:
+    resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
@@ -2593,8 +2593,8 @@ packages:
       '@vue/composition-api':
         optional: true
 
-  vue-demi@0.14.7:
-    resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
+  vue-demi@0.14.5:
+    resolution: {integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
@@ -5121,16 +5121,16 @@ snapshots:
       '@types/node': 20.11.21
       fsevents: 2.3.3
 
-  vue-demi@0.14.5(@vue/composition-api@1.4.0)(vue@3.3.4):
-    dependencies:
-      '@vue/composition-api': 1.4.0(vue@3.3.4)
-      vue: 3.3.4
-
-  vue-demi@0.14.7(@vue/composition-api@1.7.2(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3)):
+  vue-demi@0.14.10(@vue/composition-api@1.7.2(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3)):
     dependencies:
       vue: 3.4.20(typescript@5.3.3)
     optionalDependencies:
       '@vue/composition-api': 1.7.2(vue@3.4.20(typescript@5.3.3))
+
+  vue-demi@0.14.5(@vue/composition-api@1.4.0)(vue@3.3.4):
+    dependencies:
+      '@vue/composition-api': 1.4.0(vue@3.3.4)
+      vue: 3.3.4
 
   vue-eslint-parser@9.4.2(eslint@8.57.0):
     dependencies:
