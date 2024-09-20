@@ -57,7 +57,7 @@
     }
   },
   "dependencies": {
-    "emoji-picker-element": "^1.21.1",
+    "emoji-picker-element": "^1.22.7",
     "vue-demi": "^0.14.7"
   },
   "devDependencies": {
