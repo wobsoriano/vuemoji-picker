@@ -9,8 +9,8 @@ dependencies:
     specifier: ^1.7.0
     version: 1.7.0(vue@3.5.6)
   emoji-picker-element:
-    specifier: ^1.22.7
-    version: 1.22.7
+    specifier: ^1.25.0
+    version: 1.25.0
   vue-demi:
     specifier: ^0.14.10
     version: 0.14.10(@vue/composition-api@1.7.0)(vue@3.5.6)
@@ -1690,8 +1690,8 @@ packages:
     resolution: {integrity: sha512-P6FPqAWIZrC3sHDAwBitJBs7N7IF58m39XVny7DFseQXK2eiMn7nNQizFf63mWDDUnFvaqsM8FI0+ZZfLkdUGA==}
     dev: true
 
-  /emoji-picker-element@1.22.7:
-    resolution: {integrity: sha512-lX0a8f8yeDw2YuMDRqC1YXjMFRhTxezSGcSYnvgkEvtbtUnzYuNadxFrl4VBOeiwZMtwSe81nMk1Of6muNhCtQ==}
+  /emoji-picker-element@1.25.0:
+    resolution: {integrity: sha512-UcUMxqIuneLCsEJ5KpqTD1xaHZyUpg6Oa7uCVe5AMXXpsW3C2TNegbNLXj2/rlbyr6qVMf7lXTFyzvFEarOIUg==}
     dev: false
 
   /emoji-regex@8.0.0:
